@@ -2,6 +2,7 @@ package pkg.testclass;
 import pkg.lineards.LinkedList;
 import pkg.lineards.CircularLinkedList;
 import pkg.lineards.DoublyLinkedList;
+import pkg.lineards.DoublyCircularLinkedList;
 
 public class TestLinkedList {
     public static void main(String[] args) {
@@ -52,7 +53,7 @@ public class TestLinkedList {
         cLL.deleteFromBeg();
         cLL.print();
          */
-
+        /*
         DoublyLinkedList dLL = new DoublyLinkedList();
         dLL.addNodeAtBegin(5);
         dLL.deleteFromEnd();
@@ -75,5 +76,24 @@ public class TestLinkedList {
         dLL.addNodeAtEnd(3);
         System.out.println(dLL);
         dLL.getNodeByIndex(2);
+         */
+
+        DoublyCircularLinkedList dCLL = new DoublyCircularLinkedList();
+        dCLL.addNodeAtBegin(5);
+        dCLL.deleteFromEnd();
+        System.out.println(dCLL);
+        dCLL.addNodeAtEnd(7);
+        dCLL.addNodeAtEnd(2);
+        dCLL.addNodeAtEnd(4);
+        dCLL.addNodeAtBegin(3);
+        dCLL.addNodeAtEnd(1);
+        dCLL.addNodeAtBegin(6);
+        System.out.println(dCLL);
+        System.out.println(dCLL.search(7));
+        System.out.println(dCLL.search(1));
+        System.out.println(dCLL.search(0));
+        System.out.println(dCLL.search(6));
+        dCLL.deleteFromBeg();
+        System.out.println(dCLL);
     }
 }
