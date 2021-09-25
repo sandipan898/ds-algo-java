@@ -12,6 +12,8 @@ public class TestSSL {
         sll.addAt(10, 23);
         System.out.println(sll);
         System.out.println("Length: " + sll.length());
+        sll.increase(5);
+        System.out.println(sll);
         sll.delete(10);
         sll.delete(5);
         sll.delete(15);
@@ -22,6 +24,8 @@ public class TestSSL {
         System.out.println(sll);
         sll.deleteFrom(4);
         sll.deleteFrom(1);
+        System.out.println(sll);
+        sll.swap(7, 20);
         System.out.println(sll);
     }
 }

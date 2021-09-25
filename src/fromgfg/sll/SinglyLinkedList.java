@@ -9,6 +9,9 @@ class Node {
     public int getData() {
         return data;
     }
+    public void setData(int data) {
+        this.data = data;
+    }
 }
 public class SinglyLinkedList {
     Node head;
@@ -103,15 +106,14 @@ public class SinglyLinkedList {
         }
         return false;
     }
-    public boolean deleteFrom(int index) { //. . .
+    public boolean deleteFrom(int index) {
         if (head != null) {
-            if (index == 0) { // 0
-                head = head.next;
-                length--;
+            if (index == 0) {
+                deleteFirst();
                 return true;
             }
             Node temp = head;
-            while(temp.next != null && --index > 0) { //
+            while(temp.next != null && --index > 0) {
                 temp = temp.next;
             }
             if (index > 0) {
@@ -122,6 +124,62 @@ public class SinglyLinkedList {
                 length--;
                 return true;
             }
+        }
+        return false;
+    }
+    public boolean deleteFirst() {
+        if (head != null) {
+            head = head.next;
+            length--;
+            return true;
+        }
+        return false;
+    }
+    public Node searchPrevNode(int target) {
+        if (head!=null) {
+            if (head.getData() == target) return null;
+            Node temp = head;
+            while(temp.next != null) {
+                if (temp.next.getData() == target) {
+                    return temp;
+                }
+                temp = temp.next;
+            }
+        }
+        return null;
+    }
+    public boolean swap(int first, int second) {
+        if (head != null && head.next != null) {
+            Node fPrevNode = searchPrevNode(first);
+            Node sPrevNode = searchPrevNode(second);
+            // System.out.println(fPrevNode.getData() + " " + sPrevNode.getData());
+            if (fPrevNode != null && sPrevNode != null) {
+                Node firstNode = fPrevNode.next;
+                Node secondNode = sPrevNode.next;
+                if (fPrevNode != null)
+                    fPrevNode.next = secondNode;
+                else
+                    head = secondNode;
+                if (sPrevNode != null)
+                    sPrevNode.next = firstNode;
+                else
+                    head = firstNode;
+                Node temp = firstNode.next;
+                firstNode.next = secondNode.next;
+                secondNode.next = temp;
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean increase(int val) {
+        if (head != null) {
+            Node temp = head;
+            while (temp!=null) {
+                temp.setData(temp.getData() + val);
+                temp = temp.next;
+            }
+            return true;
         }
         return false;
     }
